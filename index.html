@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio BUT Réseaux & Télécommunications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #00ffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            height: 1px;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00ffff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #00ffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            border: 1px solid #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 0, 0.1));
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ffff;
+            margin: 0 auto 2rem;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+            text-shadow: 0 0 15px #00ffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #00ff00;
+        }
+
+        /* Competences Section */
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .competence-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .competence-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .competence-card h3 {
+            color: #00ff00;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.5);
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            border: 1px solid #00ffff;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #00ff00);
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        /* SAE Grid */
+        .sae-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sae-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sae-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ffff;
+            border-color: #00ff00;
+        }
+
+        .sae-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sae-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .sae-content {
+            padding: 1.5rem;
+        }
+
+        .sae-title {
+            color: #00ff00;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sae-description {
+            color: #00ffff;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .sae-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid #00ffff;
+        }
+
+        /* Semester Tabs */
+        .semester-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .tab-button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+
+        .tab-button.active {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .tab-button:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: #00ffff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .semester-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#sae">SAÉ</a></li>
+                <li><a href="#objectifs">Objectifs</a></li>
+                <li><a href="#projection">Projection</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="accueil" class="hero">
+                <div class="profile-photo">👤</div>
+                <h1>Portfolio BUT Réseaux & Télécommunications</h1>
+                <p>Première année - Semestre 1 & 2</p>
+                <p>Spécialisation en administration réseaux et développement d'applications</p>
+            </section>
+
+            <!-- Objectifs -->
+            <section id="objectifs" class="section">
+                <h2>🎯 Mes Objectifs</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background: rgba(0, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #00ffff;">
+                        <h3 style="color: #00ff00; margin-bottom: 1rem;">📚 Académiques</h3>
+                        <ul style="color: #00ffff; padding-left: 1rem;">
+                            <li>Maîtriser les fondamentaux des réseaux informatiques</li>
+                            <li>Développer des compétences en administration système</li>
+                            <li>Acquérir une expertise en développement d'applications</li>
+                            <li>Valider les 3 compétences du niveau 1</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(0, 255, 0, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #00ff00;">
+                        <h3 style="color: #00ffff; margin-bottom: 1rem;">💼 Professionnels</h3>
+                        <ul style="color: #00ffff; padding-left: 1rem;">
+                            <li>Devenir administrateur réseaux qualifié</li>
+                            <li>Développer une expertise en cybersécurité</li>
+                            <li>Maîtriser les technologies émergentes (5G, IoT)</li>
+                            <li>Préparer mon stage de 2ème année</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compétences -->
+            <section id="competences" class="section">
+                <h2>🚀 Mes Compétences - Niveau 1</h2>
+                <div class="competences-grid">
+                    <div class="competence-card">
+                        <h3>🌐 Administrer les réseaux et l'internet</h3>
+                        <p>Configuration, maintenance et surveillance des infrastructures réseau</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="75"></div>
+                        </div>
+                        <div class="progress-text">75%</div>
+                        <div style="margin-top: 1rem; font-size: 0.9rem;">
+                            <strong>SAÉ contributives:</strong> SAE11, SAE12, SAE13, SAE21, SAE22, SAE23, SAE24
+                        </div>
+                    </div>
+                    
+                    <div class="competence-card">
+                        <h3>🔗 Connecter les entreprises et les usagers</h3>
+                        <p>Mise en place de solutions de connectivité et de communication</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="70"></div>
+                        </div>
+                        <div class="progress-text">70%</div>
+                        <div style="margin-top: 1rem; font-size: 0.9rem;">
+                            <strong>SAÉ contributives:</strong> SAE12, SAE14, SAE21, SAE23, SAE24
+                        </div>
+                    </div>
+                    
+                    <div class="competence-card">
+                        <h3>💻 Créer des outils et applications informatiques</h3>
+                        <p>Développement d'applications et d'outils pour les réseaux et télécommunications</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="80"></div>
+                        </div>
+                        <div class="progress-text">80%</div>
+                        <div style="margin-top: 1rem; font-size: 0.9rem;">
+                            <strong>SAÉ contributives:</strong> SAE14, SAE15, SAE23, SAE24, SAE25
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAÉ Section -->
+            <section id="sae" class="section">
+                <h2>📁 Mes Situations d'Apprentissage et d'Évaluation</h2>
+                
+                <div class="semester-tabs">
+                    <button class="tab-button active" onclick="showSemester('s1')">Semestre 1</button>
+                    <button class="tab-button" onclick="showSemester('s2')">Semestre 2</button>
+                </div>
+
+                <!-- Semestre 1 -->
+                <div id="s1" class="tab-content active">
+                    <div class="sae-grid">
+                        <div class="sae-card" onclick="openModal('sae11')">
+                            <div class="sae-image">🔒</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE11 - Sensibilisation Hygiène Informatique</h3>
+                                <p class="sae-description">Découverte des bonnes pratiques de sécurité informatique et sensibilisation aux risques cyber.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Sécurité</span>
+                                    <span class="tag">Hygiène IT</span>
+                                    <span class="tag">Sensibilisation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae12')">
+                            <div class="sae-image">🌐</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE12 - Initiation Réseaux Informatiques</h3>
+                                <p class="sae-description">Premiers pas dans la configuration et l'administration des réseaux informatiques.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Réseaux</span>
+                                    <span class="tag">Configuration</span>
+                                    <span class="tag">Administration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae13')">
+                            <div class="sae-image">📡</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE13 - Découverte dispositifs transmission</h3>
+                                <p class="sae-description">Exploration des différents dispositifs et technologies de transmission de données.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Transmission</span>
+                                    <span class="tag">Matériel</span>
+                                    <span class="tag">Technologies</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae14')">
+                            <div class="sae-image">🌍</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE14 - Se présenter sur Internet</h3>
+                                <p class="sae-description">Création d'une présence en ligne professionnelle et développement web.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Web</span>
+                                    <span class="tag">HTML/CSS</span>
+                                    <span class="tag">Présence digitale</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae15')">
+                            <div class="sae-image">📊</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE15 - Traitements de données</h3>
+                                <p class="sae-description">Manipulation, analyse et traitement de données avec différents outils et langages.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Data</span>
+                                    <span class="tag">Analyse</span>
+                                    <span class="tag">Programming</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae16')">
+                            <div class="sae-image">📄</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE16 - Portfolio</h3>
+                                <p class="sae-description">Création et développement de ce portfolio pour documenter mon parcours.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Portfolio</span>
+                                    <span class="tag">Réflexion</span>
+                                    <span class="tag">Documentation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semestre 2 -->
+                <div id="s2" class="tab-content">
+                    <div class="sae-grid">
+                        <div class="sae-card" onclick="openModal('sae21')">
+                            <div class="sae-image">🏗️</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE21 - Construire un réseau informatique</h3>
+                                <p class="sae-description">Conception et mise en place d'une infrastructure réseau complète.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Infrastructure</span>
+                                    <span class="tag">Conception</span>
+                                    <span class="tag">Réseaux</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae22')">
+                            <div class="sae-image">📈</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE22 - Mesures/caractérisation signaux/systèmes</h3>
+                                <p class="sae-description">Analyse et mesure des caractéristiques des signaux et systèmes de transmission.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Signaux</span>
+                                    <span class="tag">Mesures</span>
+                                    <span class="tag">Analyse</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae23')">
+                            <div class="sae-image">⚙️</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE23 - Mettre en place une solution informatique</h3>
+                                <p class="sae-description">Déploiement d'une solution informatique complète répondant à un besoin spécifique.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Solution</span>
+                                    <span class="tag">Déploiement</span>
+                                    <span class="tag">Intégration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae24')">
+                            <div class="sae-image">🔧</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE24 - Projet intégratif</h3>
+                                <p class="sae-description">Projet de synthèse intégrant l'ensemble des compétences acquises.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Intégration</span>
+                                    <span class="tag">Synthèse</span>
+                                    <span class="tag">Projet</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sae-card" onclick="openModal('sae25')">
+                            <div class="sae-image">📋</div>
+                            <div class="sae-content">
+                                <h3 class="sae-title">SAE25 - Portfolio</h3>
+                                <p class="sae-description">Mise à jour et enrichissement du portfolio avec les apprentissages du S2.</p>
+                                <div class="sae-tags">
+                                    <span class="tag">Portfolio</span>
+                                    <span class="tag">Bilan</span>
+                                    <span class="tag">Évolution</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projection -->
+            <section id="projection" class="section">
+                <h2>🔮 Projection et Perspectives</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background: rgba(0, 255, 0, 0.1); padding: 2rem; border-radius: 15px; border: 1px solid #00ff00;">
+                        <h3 style="color: #00ff00; margin-bottom: 1rem;">✅ Bilan de l'année</h3>
+                        <ul style="color: #00ffff; padding-left: 1rem;">
+                            <li>11 SAÉ réalisées avec succès</li>
+                            <li>3 compétences niveau 1 développées</li>
+                            <li>Maîtrise des fondamentaux acquise</li>
+                            <li>Capacité d'adaptation et d'apprentissage démontrée</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(0, 255, 255, 0.1); padding: 2rem; border-radius: 15px; border: 1px solid #00ffff;">
+                        <h3 style="color: #00ffff; margin-bottom: 1rem;">🎯 Objectifs S3/S4</h3>
+                        <ul style="color: #00ffff; padding-left: 1rem;">
+                            <li>Développer les compétences niveau 2</li>
+                            <li>Découvrir la 4ème compétence (Sécurité)</li>
+                            <li>Réaliser un stage professionnel</li>
+                            <li>Spécialisation en cybersécurité</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); padding: 2rem; border-radius: 15px; border: 1px solid #ffff00;">
+                        <h3 style="color: #ffff00; margin-bottom: 1rem;">🚀 Vision long terme</h3>
+                        <ul style="color: #00ffff; padding-left: 1rem;">
+                            <li>Devenir expert en cybersécurité</li>
+                            <li>Poursuivre en école d'ingénieurs</li>
+                            <li>Développer des solutions innovantes</li>
+                            <li>Contribuer à la sécurité numérique</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Background Animation
+        function createBackgroundAnimation() {
+            const bg = document.getElementById('bgAnimation');
+            
+            // Create circuit lines
+            for (let i = 0; i < 5; i++) {
+                const line = document.createElement('div');
+                line.className = 'circuit-line';
+                line.style.top = Math.random() * 100 + '%';
+                line.style.left = '0';
+                line.style.width = '100%';
+                line.style.animationDelay = Math.random() * 3 + 's';
+                bg.appendChild(line);
+            }
+            
+            // Create floating particles
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                bg.appendChild(particle);
+            }
+        }
+
+        // Progress Bar Animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                setTimeout(() => {
+                    bar.style.width = progress + '%';
+                }, 500);
+            });
+        }
+
+        // Semester Tabs
+        function showSemester(semester) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected semester
+            document.getElementById(semester).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Modal Functions
+        const saeDetails = {
+            'sae11': {
+                title: 'SAE11 - Sensibilisation Hygiène Informatique',
+                description: 'Introduction aux bonnes pratiques de sécurité informatique et sensibilisation aux risques cyber.',
+                objectives: [
+                    'Identifier les principales menaces informatiques',
+                    'Appliquer les bonnes pratiques de sécurité',
+                    'Sensibiliser aux risques de phishing et malware',
+                    'Comprendre l\'importance des mots de passe sécurisés'
+                ],
+                deliverables: [
+                    'Rapport d\'analyse des vulnérabilités',
+                    'Guide de bonnes pratiques',
+                    'Présentation de sensibilisation',
+                    'Quiz de vérification des connaissances'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux'],
+                technologies: ['Outils d\'audit', 'Documentation sécurité', 'Présentation'],
+                reflection: 'Cette SAÉ m\'a permis de comprendre l\'importance cruciale de la sécurité informatique. J\'ai développé une vision globale des risques et des bonnes pratiques à adopter.'
+            },
+            'sae12': {
+                title: 'SAE12 - Initiation Réseaux Informatiques',
+                description: 'Premiers pas dans la configuration et l\'administration des réseaux informatiques.',
+                objectives: [
+                    'Comprendre les bases des réseaux TCP/IP',
+                    'Configurer des équipements réseau simples',
+                    'Diagnostiquer des problèmes de connectivité',
+                    'Documenter une architecture réseau'
+                ],
+                deliverables: [
+                    'Schéma d\'architecture réseau',
+                    'Configuration des équipements',
+                    'Tests de connectivité',
+                    'Documentation technique'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux', 'Compétence 2: Connecter les entreprises'],
+                technologies: ['Cisco Packet Tracer', 'Commandes réseau', 'Wireshark'],
+                reflection: 'J\'ai découvert la complexité et la richesse des réseaux informatiques. Cette base solide me sera essentielle pour la suite de ma formation.'
+            },
+            'sae13': {
+                title: 'SAE13 - Découverte dispositifs transmission',
+                description: 'Exploration des différents dispositifs et technologies de transmission de données.',
+                objectives: [
+                    'Identifier les différents médias de transmission',
+                    'Comprendre les caractéristiques des signaux',
+                    'Mesurer les performances de transmission',
+                    'Comparer les technologies disponibles'
+                ],
+                deliverables: [
+                    'Rapport comparatif des technologies',
+                    'Mesures et analyses de signaux',
+                    'Schémas techniques',
+                    'Recommandations d\'usage'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux'],
+                technologies: ['Analyseur de spectre', 'Câblage', 'Fibres optiques'],
+                reflection: 'L\'aspect physique des télécommunications est fascinant. J\'ai appris à analyser et optimiser les transmissions de données.'
+            },
+            'sae14': {
+                title: 'SAE14 - Se présenter sur Internet',
+                description: 'Création d\'une présence en ligne professionnelle et développement web.',
+                objectives: [
+                    'Concevoir une identité numérique professionnelle',
+                    'Développer un site web personnel',
+                    'Maîtriser HTML, CSS et JavaScript',
+                    'Optimiser le référencement et l\'accessibilité'
+                ],
+                deliverables: [
+                    'Site web personnel responsive',
+                    'CV en ligne interactif',
+                    'Portfolio de projets',
+                    'Présence sur réseaux professionnels'
+                ],
+                skills: ['Compétence 2: Connecter les entreprises', 'Compétence 3: Créer des outils'],
+                technologies: ['HTML5', 'CSS3', 'JavaScript', 'Git'],
+                reflection: 'Le développement web m\'a passionné. J\'ai découvert ma créativité et mon goût pour la programmation front-end.'
+            },
+            'sae15': {
+                title: 'SAE15 - Traitements de données',
+                description: 'Manipulation, analyse et traitement de données avec différents outils et langages.',
+                objectives: [
+                    'Maîtriser les structures de données',
+                    'Développer des algorithmes de traitement',
+                    'Utiliser des outils d\'analyse statistique',
+                    'Visualiser et présenter les résultats'
+                ],
+                deliverables: [
+                    'Scripts de traitement de données',
+                    'Analyses statistiques',
+                    'Visualisations graphiques',
+                    'Rapport d\'analyse'
+                ],
+                skills: ['Compétence 3: Créer des outils'],
+                technologies: ['Python', 'SQL', 'Excel', 'Matplotlib'],
+                reflection: 'L\'analyse de données ouvre de nombreuses perspectives. J\'ai développé une approche méthodique et analytique.'
+            },
+            'sae16': {
+                title: 'SAE16 - Portfolio S1',
+                description: 'Création et développement du portfolio pour documenter le parcours du S1.',
+                objectives: [
+                    'Documenter tous les apprentissages du S1',
+                    'Développer une démarche réflexive',
+                    'Présenter les compétences acquises',
+                    'Planifier la progression future'
+                ],
+                deliverables: [
+                    'Portfolio numérique complet',
+                    'Auto-évaluations des compétences',
+                    'Traces d\'apprentissage',
+                    'Plan de développement'
+                ],
+                skills: ['Compétence 3: Créer des outils'],
+                technologies: ['Outils bureautiques', 'Web', 'Réflexion'],
+                reflection: 'Le portfolio m\'a permis de prendre du recul sur mes apprentissages et de mesurer mes progrès.'
+            },
+            'sae21': {
+                title: 'SAE21 - Construire un réseau informatique',  
+                description: 'Conception et mise en place d\'une infrastructure réseau complète.',
+                objectives: [
+                    'Concevoir une architecture réseau complète',
+                    'Installer et configurer les équipements',
+                    'Tester et valider le fonctionnement',
+                    'Documenter l\'infrastructure'
+                ],
+                deliverables: [
+                    'Plan d\'architecture détaillé',
+                    'Infrastructure réseau fonctionnelle',
+                    'Tests de performance',
+                    'Documentation d\'exploitation'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux', 'Compétence 2: Connecter les entreprises'],
+                technologies: ['Routeurs Cisco', 'Switches', 'VLAN', 'Protocoles de routage'],
+                reflection: 'Projet complexe qui m\'a permis d\'appliquer concrètement mes connaissances réseau dans un contexte réaliste.'
+            },
+            'sae22': {
+                title: 'SAE22 - Mesures/caractérisation signaux/systèmes',
+                description: 'Analyse et mesure des caractéristiques des signaux et systèmes de transmission.',
+                objectives: [
+                    'Caractériser les signaux de transmission',
+                    'Mesurer les performances des systèmes',
+                    'Analyser les perturbations et bruits',
+                    'Optimiser la qualité de transmission'
+                ],
+                deliverables: [
+                    'Rapport de caractérisation',
+                    'Mesures instrumentales',
+                    'Analyses de qualité',
+                    'Recommandations d\'optimisation'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux'],
+                technologies: ['Oscilloscope', 'Analyseur de spectre', 'Générateur de signaux'],
+                reflection: 'L\'aspect technique et scientifique m\'a beaucoup plu. J\'ai développé une approche rigoureuse de la mesure.'
+            },
+            'sae23': {
+                title: 'SAE23 - Mettre en place une solution informatique',
+                description: 'Déploiement d\'une solution informatique complète répondant à un besoin spécifique.',
+                objectives: [
+                    'Analyser un besoin client',
+                    'Concevoir une solution adaptée',
+                    'Développer et intégrer la solution',
+                    'Former les utilisateurs'
+                ],
+                deliverables: [
+                    'Cahier des charges',
+                    'Solution informatique déployée',
+                    'Documentation utilisateur',
+                    'Formation et support'
+                ],
+                skills: ['Compétence 1: Administrer les réseaux', 'Compétence 2: Connecter les entreprises', 'Compétence 3: Créer des outils'],
+                technologies: ['Serveurs', 'Base de données', 'Applications web', 'Virtualisation'],
+                reflection: 'Projet intégrateur qui m\'a fait découvrir la gestion de projet et la relation client. Très enrichissant.'
+            },
+            'sae24': {
+                title: 'SAE24 - Projet intégratif',
+                description: 'Projet de synthèse intégrant l\'ensemble des compétences acquises.',
+                objectives: [
+                    'Intégrer toutes les compétences acquises',
+                    'Mener un projet d\'envergure',
+                    'Travailler en équipe efficacement',
+                    'Présenter professionnellement le projet'
+                ],
+                deliverables: [
+                    'Projet technique complet',
+                    'Documentation exhaustive',
+                    'Présentation finale',
+                    'Bilan de projet'
+                ],
+                skills: ['Compétence 1', 'Compétence 2', 'Compétence 3'],
+                technologies: ['Technologies variées selon le projet'],
+                reflection: 'Projet culminant qui démontre ma capacité à mobiliser toutes mes compétences sur un projet complexe.'
+            },
+            'sae25': {
+                title: 'SAE25 - Portfolio S2',
+                description: 'Mise à jour et enrichissement du portfolio avec les apprentissages du S2.',
+                objectives: [
+                    'Documenter les apprentissages du S2',
+                    'Analyser la progression depuis le S1',
+                    'Évaluer l\'atteinte des objectifs',
+                    'Planifier la suite du parcours'
+                ],
+                deliverables: [
+                    'Portfolio mis à jour',
+                    'Bilan de progression',
+                    'Auto-évaluations actualisées',
+                    'Projection pour l\'année 2'
+                ],
+                skills: ['Compétence 3: Créer des outils'],
+                technologies: ['Portfolio numérique', 'Outils de présentation'],
+                reflection: 'Exercice de synthèse qui me permet de mesurer le chemin parcouru et de me projeter vers l\'avenir.'
+            }
+        };
+
+        function openModal(saeId) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            const sae = saeDetails[saeId];
+            
+            modalBody.innerHTML = `
+                <h2 style="color: #00ff00; margin-bottom: 2rem; text-align: center;">${sae.title}</h2>
+                
+                <div style="display: grid; gap: 2rem;">
+                    <div style="background: rgba(0, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #00ffff;">
+                        <h3 style="color: #00ffff; margin-bottom: 1rem;">📋 Description</h3>
+                        <p style="color: #ffffff;">${sae.description}</p>
+                    </div>
+                    
+                    <div style="background: rgba(0, 255, 0, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #00ff00;">
+                        <h3 style="color: #00ff00; margin-bottom: 1rem;">🎯 Objectifs</h3>
+                        <ul style="color: #ffffff; padding-left: 1.5rem;">
+                            ${sae.objectives.map(obj => `<li>${obj}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #ffff00;">
+                        <h3 style="color: #ffff00; margin-bottom: 1rem;">📦 Livrables</h3>
+                        <ul style="color: #ffffff; padding-left: 1.5rem;">
+                            ${sae.deliverables.map(deliv => `<li>${deliv}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 0, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #ff00ff;">
+                        <h3 style="color: #ff00ff; margin-bottom: 1rem;">🚀 Compétences développées</h3>
+                        <ul style="color: #ffffff; padding-left: 1.5rem;">
+                            ${sae.skills.map(skill => `<li>${skill}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 165, 0, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #ffa500;">
+                        <h3 style="color: #ffa500; margin-bottom: 1rem;">🛠️ Technologies utilisées</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            ${sae.technologies.map(tech => `<span style="background: rgba(255, 165, 0, 0.2); color: #ffa500; padding: 0.3rem 0.8rem; border-radius: 15px; border: 1px solid #ffa500; font-size: 0.9rem;">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid #00ffff;">
+                        <h3 style="color: #00ffff; margin-bottom: 1rem;">💭 Réflexion personnelle</h3>
+                        <p style="color: #ffffff; font-style: italic;">${sae.reflection}</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <div style="background: rgba(0, 0, 0, 0.5); padding: 1rem; border-radius: 10px; border: 1px solid #00ffff;">
+                            <p style="color: #00ffff; margin-bottom: 0.5rem;">📸 Visuel du projet</p>
+                            <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #1a1a2e, #16213e); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                                ${saeId === 'sae11' ? '🔒' : saeId === 'sae12' ? '🌐' : saeId === 'sae13' ? '📡' : saeId === 'sae14' ? '🌍' : saeId === 'sae15' ? '📊' : saeId === 'sae16' ? '📄' : saeId === 'sae21' ? '🏗️' : saeId === 'sae22' ? '📈' : saeId === 'sae23' ? '⚙️' : saeId === 'sae24' ? '🔧' : '📋'}
+                            </div>
+                            <p style="color: #888; font-size: 0.9rem; margin-top: 0.5rem;">Capture d'écran, schéma ou photo du projet</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('section')) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                    if (entry.target.id === 'competences') {
+                        setTimeout(animateProgressBars, 500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackgroundAnimation();
+            
+            // Set initial styles for animation
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+            
+            // Animate hero section
+            setTimeout(() => {
+                document.querySelector('.hero').style.opacity = '1';
+                document.querySelector('.hero').style.transform = 'translateY(0)';
+            }, 300);
+        });
+
+        // Typing effect for hero title (optional enhancement)
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+    </script>
+</body>
+</html>
