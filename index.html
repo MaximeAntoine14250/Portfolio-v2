@@ -128,12 +128,17 @@
             border-radius: 50%;
             border: 3px solid #00ffff;
             margin: 0 auto 2rem;
-            background: #333;
+            background: url("data.jfif");
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
             box-shadow: 0 0 20px #00ffff;
+            background-size: cover;           /* ou contain selon le besoin */
+            background-position: center;      /* centre l’image */
+            background-repeat: no-repeat;     /* empêche la répétition */
+
+            
         }
 
         .hero h1 {
@@ -238,7 +243,7 @@
             border-color: #00ff00;
         }
 
-        .sae-image {
+        .sae-image-sae11 {
             width: 100%;
             height: 200px;
             background: linear-gradient(45deg, #1a1a2e, #16213e);
@@ -249,6 +254,125 @@
             color: #00ffff;
             position: relative;
             overflow: hidden;
+            background: url("sae11.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-position: center;      /* centre l’image */
+            background-repeat: no-repeat;     /* empêche la répétition */
+        }
+
+        .sae-image-sae12 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae12.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+
+        }
+
+        .sae-image-sae13 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae13.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+        }
+
+        .sae-image-sae14 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae14.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+
+        }
+
+        .sae-image-sae15 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae15.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+
+        }
+
+        
+        .sae-image-sae22 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae22.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+        }
+
+        .sae-image-sae23 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            background: url("sae23.PNG");
+            background-size: cover;           /* ou contain selon le besoin */
+            background-repeat: no-repeat;     /* empêche la répétition */
+
+        }
+
+        .sae-image {
+            width: 500%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+
         }
 
         .sae-image::before {
@@ -435,7 +559,7 @@
         <div class="container">
             <!-- Hero Section -->
             <section id="accueil" class="hero">
-                <div class="profile-photo">👤</div>
+                <div class="profile-photo" ></div>
                 <h1>Portfolio BUT Réseaux & Télécommunications</h1>
                 <p>Première année - Semestre 1 & 2</p>
                 <p>Spécialisation en administration réseaux et développement d'applications</p>
@@ -521,7 +645,7 @@
                 <div id="s1" class="tab-content active">
                     <div class="sae-grid">
                         <div class="sae-card" onclick="openModal('sae11')">
-                            <div class="sae-image">🔒</div>
+                            <div class="sae-image-sae11"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE11 - Sensibilisation Hygiène Informatique</h3>
                                 <p class="sae-description">Découverte des bonnes pratiques de sécurité informatique et sensibilisation aux risques cyber.</p>
@@ -534,7 +658,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae12')">
-                            <div class="sae-image">🌐</div>
+                            <div class="sae-image-sae12"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE12 - Initiation Réseaux Informatiques</h3>
                                 <p class="sae-description">Premiers pas dans la configuration et l'administration des réseaux informatiques.</p>
@@ -547,7 +671,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae13')">
-                            <div class="sae-image">📡</div>
+                            <div class="sae-image-sae13"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE13 - Découverte dispositifs transmission</h3>
                                 <p class="sae-description">Exploration des différents dispositifs et technologies de transmission de données.</p>
@@ -560,7 +684,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae14')">
-                            <div class="sae-image">🌍</div>
+                            <div class="sae-image-sae14"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE14 - Se présenter sur Internet</h3>
                                 <p class="sae-description">Création d'une présence en ligne professionnelle et développement web.</p>
@@ -573,7 +697,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae15')">
-                            <div class="sae-image">📊</div>
+                            <div class="sae-image-sae15"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE15 - Traitements de données</h3>
                                 <p class="sae-description">Manipulation, analyse et traitement de données avec différents outils et langages.</p>
@@ -581,19 +705,6 @@
                                     <span class="tag">Data</span>
                                     <span class="tag">Analyse</span>
                                     <span class="tag">Programming</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sae-card" onclick="openModal('sae16')">
-                            <div class="sae-image">📄</div>
-                            <div class="sae-content">
-                                <h3 class="sae-title">SAE16 - Portfolio</h3>
-                                <p class="sae-description">Création et développement de ce portfolio pour documenter mon parcours.</p>
-                                <div class="sae-tags">
-                                    <span class="tag">Portfolio</span>
-                                    <span class="tag">Réflexion</span>
-                                    <span class="tag">Documentation</span>
                                 </div>
                             </div>
                         </div>
@@ -617,7 +728,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae22')">
-                            <div class="sae-image">📈</div>
+                            <div class="sae-image-sae22"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE22 - Mesures/caractérisation signaux/systèmes</h3>
                                 <p class="sae-description">Analyse et mesure des caractéristiques des signaux et systèmes de transmission.</p>
@@ -630,7 +741,7 @@
                         </div>
 
                         <div class="sae-card" onclick="openModal('sae23')">
-                            <div class="sae-image">⚙️</div>
+                            <div class="sae-image-sae23"></div>
                             <div class="sae-content">
                                 <h3 class="sae-title">SAE23 - Mettre en place une solution informatique</h3>
                                 <p class="sae-description">Déploiement d'une solution informatique complète répondant à un besoin spécifique.</p>
@@ -651,19 +762,6 @@
                                     <span class="tag">Intégration</span>
                                     <span class="tag">Synthèse</span>
                                     <span class="tag">Projet</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sae-card" onclick="openModal('sae25')">
-                            <div class="sae-image">📋</div>
-                            <div class="sae-content">
-                                <h3 class="sae-title">SAE25 - Portfolio</h3>
-                                <p class="sae-description">Mise à jour et enrichissement du portfolio avec les apprentissages du S2.</p>
-                                <div class="sae-tags">
-                                    <span class="tag">Portfolio</span>
-                                    <span class="tag">Bilan</span>
-                                    <span class="tag">Évolution</span>
                                 </div>
                             </div>
                         </div>
@@ -1040,9 +1138,12 @@
                     <div style="text-align: center; margin-top: 2rem;">
                         <div style="background: rgba(0, 0, 0, 0.5); padding: 1rem; border-radius: 10px; border: 1px solid #00ffff;">
                             <p style="color: #00ffff; margin-bottom: 0.5rem;">📸 Visuel du projet</p>
+
                             <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #1a1a2e, #16213e); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
                                 ${saeId === 'sae11' ? '🔒' : saeId === 'sae12' ? '🌐' : saeId === 'sae13' ? '📡' : saeId === 'sae14' ? '🌍' : saeId === 'sae15' ? '📊' : saeId === 'sae16' ? '📄' : saeId === 'sae21' ? '🏗️' : saeId === 'sae22' ? '📈' : saeId === 'sae23' ? '⚙️' : saeId === 'sae24' ? '🔧' : '📋'}
                             </div>
+
+
                             <p style="color: #888; font-size: 0.9rem; margin-top: 0.5rem;">Capture d'écran, schéma ou photo du projet</p>
                         </div>
                     </div>
